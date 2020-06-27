@@ -1,6 +1,7 @@
 package com.bwbear.server;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -33,15 +34,26 @@ public class MiniCat {
         ServerSocket serverSocket = new ServerSocket(port);
         System.out.println("=====>>>Minicat start on port：" + port);
 
+//        while(true) {
+//            Socket socket = serverSocket.accept();
+//            // 有了socket，接收到请求，获取输出流
+//            OutputStream outputStream = socket.getOutputStream();
+//            String data = "Hello Minicat!";
+//            String responseText = HttpProtocolUtil.getHttpHeader200(data.getBytes().length) + data;
+//            outputStream.write(responseText.getBytes());
+//            socket.close();
+//        }
+
         while(true) {
             Socket socket = serverSocket.accept();
-            // 有了socket，接收到请求，获取输出流
-            OutputStream outputStream = socket.getOutputStream();
-            String data = "Hello Minicat!";
-            String responseText = HttpProtocolUtil.getHttpHeader200(data.getBytes().length) + data;
-            outputStream.write(responseText.getBytes());
+            InputStream inputStream = socket.getInputStream();
+            // 封装Request对象和Response对象
+            Request request = new Request(inputStream);
+            Response response = new Response(socket.getOutputStream());
+            response.outputHtml(request.getUrl());
             socket.close();
         }
+
     }
 
     /**
