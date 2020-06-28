@@ -6,7 +6,7 @@
 
     <groupId>com.bwbear.server</groupId>
     <artifactId>minicat</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

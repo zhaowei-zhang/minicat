@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * @author 张照威
@@ -121,10 +122,37 @@ public class MiniCat {
 //            }
 //            socket.close();
 //        }
+
+        //1.4 多线程  非线程池
+//        while(true) {
+//            Socket socket = serverSocket.accept();
+//            RequestProcessor requestProcessor = new RequestProcessor(socket,servletMap);
+//            requestProcessor.start();
+//        }
+
+        // 定义一个线程池
+        int corePoolSize = 10;
+        int maximumPoolSize =50;
+        long keepAliveTime = 100L;
+        TimeUnit unit = TimeUnit.SECONDS;
+        BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(50);
+        ThreadFactory threadFactory = Executors.defaultThreadFactory();
+        RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
+
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+                corePoolSize,
+                maximumPoolSize,
+                keepAliveTime,
+                unit,
+                workQueue,
+                threadFactory,
+                handler
+        );
+
         while(true) {
             Socket socket = serverSocket.accept();
             RequestProcessor requestProcessor = new RequestProcessor(socket,servletMap);
-            requestProcessor.start();
+            threadPoolExecutor.execute(requestProcessor);
         }
 
     }
