@@ -6,7 +6,11 @@
 
     <groupId>com.bwbear.server</groupId>
     <artifactId>minicat</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>1.5-SNAPSHOT</version>
+    <modules>
+        <module>../webdemo1</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -22,6 +26,14 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

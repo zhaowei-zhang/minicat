@@ -2,7 +2,7 @@
 <web-app>
     <servlet>
         <servlet-name>bwbear</servlet-name>
-        <servlet-class>com.bwbear.server.BwServlet</servlet-class>
+        <servlet-class>com.com.bwbear.server.BwServlet</servlet-class>
     </servlet>
 
 

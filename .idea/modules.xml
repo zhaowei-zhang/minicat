@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/minicat.iml" filepath="$PROJECT_DIR$/minicat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webdemo1/webdemo1.iml" filepath="$PROJECT_DIR$/../webdemo1/webdemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webdemo2/webdemo2.iml" filepath="$PROJECT_DIR$/../webdemo2/webdemo2.iml" />
     </modules>
   </component>
 </project>

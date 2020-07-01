@@ -17,6 +17,17 @@ public class Request {
 
     private InputStream inputStream;  // 输入流，其他属性从输入流中解析出来
 
+    private String ipOrDomain;
+
+    private String port;
+
+    public String getIpOrDomain() {
+        return ipOrDomain;
+    }
+
+    public String getPort() {
+        return port;
+    }
 
     public String getMethod() {
         return method;
@@ -49,7 +60,6 @@ public class Request {
     // 构造器，输入流传入
     public Request(InputStream inputStream) throws IOException {
         this.inputStream = inputStream;
-
         // 从输入流中获取请求信息
         int count = 0;
         while (count == 0) {
@@ -60,8 +70,9 @@ public class Request {
         inputStream.read(bytes);
 
         String inputStr = new String(bytes);
+        String[] split = inputStr.split("\\n");
         // 获取第一行请求头信息
-        String firstLineStr = inputStr.split("\\n")[0];  // GET / HTTP/1.1
+        String firstLineStr = split[0];  // GET / HTTP/1.1
 
         String[] strings = firstLineStr.split(" ");
 
@@ -71,6 +82,11 @@ public class Request {
         System.out.println("=====>>method:" + method);
         System.out.println("=====>>url:" + url);
 
+        String l2=split[1];
+        String[] host = l2.replaceAll("Host: ", "").split(":");
+
+        ipOrDomain = host[0];
+        port = host[1].replaceAll("\r","");
 
     }
 }

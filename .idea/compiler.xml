@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="minicat" />
+        <module name="webdemo1" />
+        <module name="webdemo2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="minicat" target="11" />
+      <module name="webdemo1" target="11" />
+      <module name="webdemo2" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

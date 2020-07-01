@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Server>
+    <Host name="localhost"  appBase="webapps" >
+        <Context path="webdemo1" docBase="/webdemo1"/>
+        <Context path="/" docBase="/webdemo2"/>
+    </Host>
+</Server>
