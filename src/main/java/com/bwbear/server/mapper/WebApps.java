@@ -7,5 +7,6 @@ package com.bwbear.server.mapper;
  * @describe
  */
 public class WebApps {
-    public static final String WEB_APPS_PATH = "D:/work/java/webapps";
+    // D:/work/java/webapps
+    public static final String WEB_APPS_PATH = "C:/Users/webapps";
 }
